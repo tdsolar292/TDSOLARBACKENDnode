@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Commercial Proforma Invoice</title>
+   <style>
+  .clss-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .clss-cell {
+    border: 1px solid #000;
+    padding: 4px 4px;
+    vertical-align: top;
+  }
+  .clss-no-border {
+    border: none;
+  }
+  .clss-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+  }
+  .clss-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .clss-total {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  .clss-p0{
+      padding: 0;
+  } 
+  .clss-m0{
+      margin: 0;
+  }
+  .clss-bl-0{
+      border-left: 0;
+  }
+  .clss-br-0{
+      border-right: 0;
+  }
+  .clss-bt-0{
+      border-top: 0;
+  }
+  .clss-bb-0{
+      border-bottom: 0;
+  }
+  .clss-tr {
+    text-align: right;
+  }
+  .clss-tc {
+    text-align: center;
+  }
+  .clss-tl{
+    text-align: left;
+  }
+  .clss-fb{
+      font-weight: bold;
+  }
+  .clss-fsize-18 {
+    font-size: 18px;
+  }
+  .clss-fsize-16 {
+    font-size: 16px;
+  }
+  .clss-fsize-14 {
+    font-size: 14px;
+  }
+  a{
+    text-decoration: none !important;
+    color: black;
+  }
+  .clss-textc-white{
+    color: white;
+  } 
+  .clss-bgc-green {
+    background-color: #18aa48; /* Green background */
+  }
+  .clss-bgc-gray{
+     background-color: #f0f0f0;
+  }
+  .clss-p10 {
+    padding: 10px;
+  }
+  .clss-p510 {
+    padding: 5px 10px;
+  }
+  .clss-pt-10 {
+    padding-top: 10px;
+  }
+  .clss-pt-15 {
+    padding-top: 15px;
+  }
+  .clss-mt-20 {
+    padding-top: 10px;
+  }
+  .clss-table-material .clss-cell{
+   padding: 8px 5px;
+   vertical-align: middle;
+  }
+  .clss-up{
+    text-transform: uppercase;
+  }
+  .clss-camel{
+    text-transform: capitalize;
+  }
+  .clss-lower{
+    text-transform: lowercase;
+  }
+  </style>
+</head>
+<body style="font-family: Arial, sans-serif; font-size: 12px;">
+  <!-- Header with logo and company info -->
+<table class="clss-table">
+   <tr>
+    <td colspan="3" width="33%" class="clss-no-border clss-fsize-14">
+      <a href="tel:+919775550672">9775550672</a><br>
+      <a href="tel:+918777414403">8777414403</a><br>
+      <a href="tel:+919732550550">9732550550</br><br>
+      <a href="mailto:contact@tdsolar.in">contact@tdsolar.in</a><br>
+      <a href="www.tdsolar.in">www.tdsolar.in</a><br>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-pt-15" style="text-align: left;vertical-align: top;">
+      <strong class="clss-fsize-14 clss-fb clss-textc-white clss-bgc-green clss-p510">TD SOLAR (Technical Dwipayan)</strong><br><br>
+      GR FL SHOP NO 2&amp;5, RAJNANDINI VILLA,<br>
+      KHARDAHA THANA ROAD 45,<br>
+      NORTH 24 PARGANAS,<br>
+      KOLKATA - 700116<br><br>
+      <strong>GSTIN: 19ASPPD1614E1ZZ</strong>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-tr">
+      <img src="https://tdsolar.in/cdn_images/logo.png" alt="Company Logo" style="width: 200px; height: 110px;">
+    </td>
+  </tr>
+</table>
+
+<!-- To, From, and Invoice Details (3-column layout) -->
+<table class="clss-table" style="margin-top: 4px;">
+  <tr>
+    <td class="clss-cell clss-camel" width="33%">
+       <strong class="clss-up">Buyer Details</strong><br><br>
+       <%= ClientName%><br>
+        <%= ClientAddress%><br>
+        <%= ClientState%><br><br>
+        <%= ClientMobile%><br>
+        <span class="clss-lower"><%= ClientEmail%></span>
+    </td>
+    <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
+       <%= ClientName%><br>
+        <%= ClientAddress%><br>
+        <%= ClientState%><br><br>
+        <%= ClientMobile%><br>
+         <span class="clss-lower"><%= ClientEmail%></span>
+    </td>
+    <td class="clss-cell clss-p0 clss-m0" width="34%">
+      <table class="clss-table">
+        <tr>
+          <td class="clss-cell clss-bl-0 clss-bt-0" width="50%">Invoice Date</td>
+          <td class="clss-cell clss-br-0 clss-bt-0" width="50%"><%= InvoiceDate %></td>
+        </tr>
+         <tr>
+          <td class="clss-cell clss-bl-0">Invoice No.</td>
+          <td class="clss-cell clss-br-0"><%= TDGINV %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Code</td>
+          <td class="clss-cell clss-br-0"><%= ClientCode%></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Mobile</td>
+          <td class="clss-cell clss-br-0"><%= ClientMobile %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Proforma Invoice No.</td>
+          <td class="clss-cell clss-br-0"><%= PONo%></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <h2 style="text-align:center;margin: 0; padding:1rem;" class="clss-header">COMMERCIAL PROFORMA INVOICE</h2>
+
+
+  <!-- Material list -->
+<table class="clss-table clss-table-material">
+  <tr class="clss-header">
+    <td class="clss-cell">SL No.</td>
+    <td class="clss-cell" width="80%">Commodity Description</td>
+    <td class="clss-cell">Qty</td>
+    <td class="clss-cell">Unit</td>
+  </tr>
+  <!--SOLAR MODULE 1-->
+  <% if (modRequired1) { %>
+    <tr>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">
+        SOLAR PV MODULS:&nbsp;<%= modBrand1+' '+modType1+' '+modTech1+' '+modRating1+'W '+ %><br>
+      </td>
+      <td class="clss-cell"><%= modQuantity1 %></td>
+      <td class="clss-cell"><%= modQUnit1 %></td>
+    </tr>
+  <% } %>
+  <!--STRUCTURE 2-->
+  <% if (stRoofRequired2 === true || stTinRequired2 === true) { %>
+    <tr>
+      <td class="clss-cell">2</td>
+      <td class="clss-cell">
+        Structure :
+        <% if (stRoofRequired2 === true) { %>
+          Including Nut & Bolts with cement concrete(1:2:4) (Tata Squre Bar)<br>
+        <% } %>
+        <% if (stTinRequired2 === true) { %>
+          Aluminum mounting structure for Tin Shed
+        <% } %>
+      </td>
+      <td class="clss-cell">
+        <% if (stRoofRequired2 === true) { %>
+          <%= stRoofQuantity2 %>
+        <% } %>
+        <% if (stTinRequired2 === true) { %>
+          <%= stTinQuantity2 %>
+        <% } %>
+      </td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+ 
+</table>
+
+<!-- New table for Total Amount (Inc GST) -->
+<table class="clss-table">
+  <tr>
+    <td class="clss-cell clss-tl clss-fb clss-br-0" colspan="8" width="68%">Amount in words: <%= amountInWords %></td>
+    <td class="clss-cell clss-tr clss-fb clss-bl-0" colspan="8" width="20%">Total Amount (Inc GST)</td>
+    <td class="clss-cell clss-tr clss-fb" width="12%"> <%= TotalPaymentDone%></td>
+  </tr>
+</table>
+
+<!--DEVIDER-->
+<br><br>
+
+
+<!-- Tax breakdown -->
+<table class="clss-table">
+    <tr>
+        <td class="clss-cell clss-fb clss-bgc-gray" colspan="5">Tax Breakdown</td>
+    </tr>
+  <tr class="clss-header">
+    <td class="clss-cell">Tax Type</td>
+    <td class="clss-cell">Taxable Amount</td>
+    <td class="clss-cell">Rate</td>
+    <td class="clss-cell">Tax Amount</td>
+    <td class="clss-cell">Description</td>
+  </tr>
+  <tr>
+    <td class="clss-cell">SGST</td>
+    <td class="clss-cell"> <%= supplyExGST %></td>
+    <td class="clss-cell">6.0%</td>
+    <td class="clss-cell"> <%= ((supplyGST)*0.5).toFixed(2) %></td>
+    <td class="clss-cell">NET BILLING METER GOV CHARGE EXTRA</td>
+  </tr>
+  <tr>
+    <td class="clss-cell">CGST</td>
+    <td class="clss-cell"> <%= supplyExGST %></td>
+    <td class="clss-cell">6.0%</td>
+    <td class="clss-cell">  <%= ((supplyGST)*0.5).toFixed(2) %></td>
+    <td class="clss-cell"></td>
+  </tr>
+  <tr>
+    <td class="clss-cell">SGST</td>
+    <td class="clss-cell"> <%= installationExGST %></td>
+    <td class="clss-cell">9.0%</td>
+    <td class="clss-cell">  <%= ((installationGST)*0.5).toFixed(2) %></td>
+    <td class="clss-cell"></td>
+  </tr>
+  <tr>
+    <td class="clss-cell">CGST</td>
+    <td class="clss-cell"> <%= installationExGST %></td>
+    <td class="clss-cell">9.0%</td>
+    <td class="clss-cell">  <%= ((installationGST)*0.5).toFixed(2) %></td>
+    <td class="clss-cell"></td>
+  </tr>
+</table>
+<br><br>
+ <!-- Bank & Terms -->
+<table class="clss-table" style="margin-top: 10px; margin-bottom: 50px;">
+  <tr class="clss-header">
+    <td class="clss-cell" width="33.33%"><strong>Bank Details</strong></td>
+    <td class="clss-cell" width="33.34%"><strong>Terms & Conditions</strong></td>
+    <td class="clss-cell clss-tc" width="33.33%"><strong>For TD Solar (Technical Dwipayan)</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell" valign="top">
+      A/C NAME - TECHNICAL DWIPAYAN<br>
+      NAME OF BANK : STATE BANK OF INDIA<br>
+      BRANCH CITY : KHARDAH BRANCH<br>
+      TYPE OF ACCOUNT : CURRENT ACCOUNT<br>
+      ACCOUNT NUMBER : 41416611152<br>
+      IFSC CODE : SBIN0001899
+    </td>
+    <td class="clss-cell" valign="top">
+          1. Thank you for your business with TD SOLAR.<br>
+          2. This invoice is issued under applicable GST laws for the supply and installation of solar PV systems.<br>
+          3. Please save the invoice copy with you for your reference.<br>
+          4. For any queries, contact us at the provided phone numbers or email.
+    </td>
+    <td class="clss-cell clss-tc" valign="top">
+        <img src="https://tdsolar.in/cdn_images/stamp.png" alt="Signature" style="width: 130px; height: auto;"><br>
+        Authorized Signatory
+
+    </td>
+  </tr>
+</table>
+<br><br><br><br>
+  <table width="100%" border="1" cellspacing="0" cellpadding="5">
+    <tr>
+      <td><strong>PV MODULE MODEL & SERIAL NUMBERS</strong><br>
+        <b>MODEL NUMBER:</b><%= PVModules_ModelName %><br><br>
+        <b>SERIAL NUMBER:</b><br>
+        <% if (Array.isArray(PVModules_SL)) { %>
+          <% PVModules_SL.forEach(function(sn) { %>
+            <span class="clss-up"><%= sn %></span><br>
+          <% }); %>
+        <% } %>
+        <br><br>
+        <br><br>
+        <strong>INVERTER MODEL & SERIAL NUMBER</strong><br><br>
+        <b>MODEL NUMBER:</b><%= Inverters_ModelName %><br><br>
+        <b>SERIAL NUMBER:</b><br>
+       <% if (Array.isArray(Inverters_SL)) { %>
+          <% Inverters_SL.forEach(function(sn) { %>
+            <span class="clss-up"><%= sn %></span><br>
+          <% }); %>
+        <% } %>
+        <br><br>
+        <strong>BATTERY MODEL & SERIAL NUMBERS</strong><br><br>
+        <b>MODEL NUMBER:</b><%= Batteries_ModelName %><br><br>
+        <b>SERIAL NUMBER:</b><br>
+        <% if (Array.isArray(Batteries_SL)) { %>
+          <% Batteries_SL.forEach(function(sn) { %>
+            <span class="clss-up"><%= sn %></span><br><br>
+          <% }); %>
+        <% } %>
+        <br><br>
+        <strong>EXTRA COMPONENTS SERIAL NUMBERS</strong><br><br>
+        <% if (Array.isArray(Extra_SL)) { %>
+          <% Extra_SL.forEach(function(sn) { %>
+            <span class="clss-up"><%= sn %></span><br>
+          <% }); %>
+        <% } %>
+      </td>
+    </tr>
+  </table>
+<!-- Signature -->
+ <table class="clss-table" style="margin-top: 20px;">
+  <tr>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: left;" width="50%">
+      <strong>Document ID:</strong> <%= _id%>
+    </td>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: right;" width="50%">
+      <span style="text-align: left;" ><strong>Document Date:</strong> <%= InvoiceDate %></span>
+     Generated By - Dwipayan
+    </td>
+  </tr>
+</table>
+  
+
+
+</body>
+</html>

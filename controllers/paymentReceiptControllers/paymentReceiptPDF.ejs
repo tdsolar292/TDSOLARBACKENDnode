@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt</title>
+    <style>
+        .clss-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .clss-cell {
+    border: 1px solid #000;
+    padding: 4px 4px;
+    vertical-align: top;
+  }
+  .clss-no-border {
+    border: none;
+  }
+  .clss-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+  }
+  .clss-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .clss-total {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  .clss-p0{
+      padding: 0;
+  } 
+  .clss-m0{
+      margin: 0;
+  }
+  .clss-bl-0{
+      border-left: 0;
+  }
+  .clss-br-0{
+      border-right: 0;
+  }
+  .clss-bt-0{
+      border-top: 0;
+  }
+  .clss-bb-0{
+      border-bottom: 0;
+  }
+  .clss-tr {
+    text-align: right;
+  }
+  .clss-tc {
+    text-align: center;
+  }
+  .clss-tl{
+    text-align: left;
+  }
+  .clss-fb{
+      font-weight: bold;
+  }
+  .clss-fsize-18 {
+    font-size: 18px;
+  }
+  .clss-fsize-16 {
+    font-size: 16px;
+  }
+  .clss-fsize-14 {
+    font-size: 14px;
+  }
+  .clss-fsize-12 {
+    font-size: 12px;
+  }
+  a{
+    text-decoration: none !important;
+    color: black;
+  }
+  .clss-textc-white{
+    color: white;
+  } 
+  .clss-bgc-green {
+    background-color: #18aa48; /* Green background */
+  }
+  .clss-bgc-gray{
+     background-color: #f0f0f0;
+  }
+  .clss-p10 {
+    padding: 10px;
+  }
+  .clss-p510 {
+    padding: 5px 10px;
+  }
+  .clss-p5 {
+    padding: 5px;
+  }
+  .clss-pt-10 {
+    padding-top: 10px;
+  }
+  .clss-pt-15 {
+    padding-top: 15px;
+  }
+  .clss-mt-20 {
+    padding-top: 10px;
+  }
+  .clss-table-material .clss-cell{
+   padding: 8px 5px;
+   vertical-align: middle;
+  }
+  .clss-up{
+    text-transform: uppercase;
+  }
+  .clss-camel{
+    text-transform: capitalize;
+  }
+  .clss-lower{
+    text-transform: lowercase;
+  }
+  .clss-bg-y{
+    background-color: #ffff07 !important; /* Light yellow background */
+  }
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+        .receipt-header h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .receipt-header p {
+            margin: 5px 0;
+            color: #7f8c8d;
+        }
+        .receipt-details {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        .receipt-details th, .receipt-details td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .receipt-details th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            width: 30%;
+        }
+        .amount-row {
+            font-weight: bold;
+            background-color: #f8f9fa;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: right;
+            border-top: 1px dashed #7f8c8d;
+            padding-top: 0px;
+        }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; font-size: 12px;">
+    <!-- Header with logo and company info -->
+<table class="clss-table">
+  <tr>
+    <td colspan="3" width="33%" class="clss-no-border clss-fsize-14">
+      <a href="tel:+919775550672">9775550672</a><br>
+      <a href="tel:+918777414403">8777414403</a><br>
+      <a href="tel:+919732550550">9732550550</br><br>
+      <a href="mailto:contact@tdsolar.in">contact@tdsolar.in</a><br>
+      <a href="www.tdsolar.in">www.tdsolar.in</a><br>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-pt-15" style="text-align: left;vertical-align: top;">
+      <strong class="clss-fsize-12 clss-fb clss-textc-white clss-bgc-green clss-p5">TD SOLAR (Technical Dwipayan)</strong><br><br>
+      GR FL SHOP NO 2&amp;5, RAJNANDINI VILLA,<br>
+      KHARDAHA THANA ROAD 45,<br>
+      NORTH 24 PARGANAS,<br>
+      KOLKATA - 700116<br>
+      <strong>GSTIN: 19ASPPD1614E1ZZ</strong>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-tr">
+      <img src="https://tdsolar.in/cdn_images/logo.png" alt="Company Logo" style="width: 230px; height: 120px;">
+    </td>
+  </tr>
+</table>
+
+<!-- To, From, and Invoice Details (3-column layout) -->
+<table class="clss-table" style="margin-top: 4px;">
+  <tr>
+    <td class="clss-cell clss-camel" width="33%">
+       <strong class="clss-up">Buyer Details</strong><br><br>
+      <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
+       <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-p0 clss-m0" width="34%">
+      <table class="clss-table">
+        <tr>
+          <td class="clss-cell clss-bl-0 clss-bt-0" width="50%">Payment Date</td>
+          <td class="clss-cell clss-br-0 clss-bt-0" width="50%"><%= paymentDate %></td>
+        </tr>
+         <tr>
+          <td class="clss-cell clss-bl-0">Proforma Invoice No.</td>
+          <td class="clss-cell clss-br-0"><%= invoiceNumber %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Code</td>
+          <td class="clss-cell clss-br-0"><%= clientId%></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Mobile</td>
+          <td class="clss-cell clss-br-0"><%= clientMobile ? clientMobile : '' %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Receipt Number</td>
+          <td class="clss-cell clss-br-0"><%= receiptNo ? receiptNo : '' %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <h2 style="text-align:center;margin: 0; padding:0.5rem 1rem 0.5rem 1rem;" class="clss-header clss-bg-y">PAYMENT RECEIPT</h2>
+
+
+<!--DEVIDER-->
+
+    <table class="receipt-details">
+        <tr>
+            <th>Payment Details</th>
+            <td><%= paymentDetails ? (paymentDetails+' Against Proforma Invoice-'+invoiceNumber) : '' %></td>
+        </tr>
+        <tr>
+            <th>Payment Mode</th>
+            <td><%= paymentMode ? paymentMode : '' %></td>
+        </tr>
+        <tr>
+            <th>Transaction Details</th>
+            <td><%= transactionDetails ? transactionDetails : '' %></td>
+        </tr>
+        <tr class="amount-row">
+            <th>Amount Received</th>
+            <td class="clss-fsize-16"><%= amount ? ('₹'+amount.toLocaleString('en-IN')+'/-') : '-' %><br>
+              <small><%= amtinword ? amtinword : '' %></small>
+            </td>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Bank & Terms -->
+<table class="clss-table" style="margin-top: 50px; margin-bottom: 0px;">
+  <tr class="clss-header">
+    <td class="clss-cell" width="33.33%"><strong>Bank Details</strong></td>
+    <td class="clss-cell" width="33.34%"><strong>Terms & Conditions</strong></td>
+    <td class="clss-cell clss-tc" width="33.33%"><strong>For TD Solar (Technical Dwipayan)</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell" valign="top">
+      A/C NAME - TECHNICAL DWIPAYAN<br>
+      NAME OF BANK : STATE BANK OF INDIA<br>
+      BRANCH CITY : KHARDAH BRANCH<br>
+      TYPE OF ACCOUNT : CURRENT ACCOUNT<br>
+      ACCOUNT NUMBER : 41416611152<br>
+      IFSC CODE : SBIN0001899
+    </td>
+    <td class="clss-cell" valign="top">
+          1. Thank you for your business with TD SOLAR.<br>
+          2. This Receipt is issued under applicable GST laws for the supply and installation of solar PV systems.<br>
+          3. Please save the Receipt copy with you for your reference.<br>
+          4. For any queries, contact us at the provided phone numbers or email.
+    </td>
+    <td class="clss-cell clss-tc">
+        <img src="https://tdsolar.in/cdn_images/stamp.png" alt="Signature" style="width: 130px; height: auto;padding-top:30px;"><br><br>
+        Authorized Signatory
+
+    </td>
+  </tr>
+</table>
+<!-- Signature -->
+ <table class="clss-table" style="margin-top: 5px;">
+  <tr>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: left;" width="50%">
+      <strong>Document ID:</strong> <%= _id %>
+    </td>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: right;" width="50%">
+      <span style="text-align: left;" ><strong>Document Date:</strong> </span>
+     Generated By - <%= receiptGeneratedBy %>
+    </td>
+  </tr>
+</table>
+
+
+    <div class="footer">
+        <div style="text-align: left; margin-bottom: 0px;">
+            <p><strong>Notes:</strong></p>
+            <ul style="margin-top: 5px; padding-left: 20px;">
+                <li>This is a computer generated receipt and does not require signature</li>
+                <li>Please retain this receipt for your records</li>
+                <li>For any queries, contact accounts@tdsolar.com and Mobile Numbers Mentioned on the Payment Receipt</li>
+            </ul>
+        </div>
+    </div>
+    <p class="clss-tr" style="margin-bottom: 10px; font-size: 8px;">Page 1 of 1 </p>
+</body>
+</html>

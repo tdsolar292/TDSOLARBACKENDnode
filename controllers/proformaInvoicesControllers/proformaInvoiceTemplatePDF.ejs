@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Proforma Invoice</title>
+   <style>
+  .clss-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .clss-cell {
+    border: 1px solid #000;
+    padding: 4px 4px;
+    vertical-align: top;
+  }
+  .clss-no-border {
+    border: none;
+  }
+  .clss-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+  }
+  .clss-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .clss-total {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  .clss-p0{
+      padding: 0;
+  } 
+  .clss-m0{
+      margin: 0;
+  }
+  .clss-bl-0{
+      border-left: 0;
+  }
+  .clss-br-0{
+      border-right: 0;
+  }
+  .clss-bt-0{
+      border-top: 0;
+  }
+  .clss-bb-0{
+      border-bottom: 0;
+  }
+  .clss-tr {
+    text-align: right;
+  }
+  .clss-tc {
+    text-align: center;
+  }
+  .clss-tl{
+    text-align: left;
+  }
+  .clss-fb{
+      font-weight: bold;
+  }
+  .clss-fsize-18 {
+    font-size: 18px;
+  }
+  .clss-fsize-16 {
+    font-size: 16px;
+  }
+  .clss-fsize-14 {
+    font-size: 14px;
+  }
+  a{
+    text-decoration: none !important;
+    color: black;
+  }
+  .clss-textc-white{
+    color: white;
+  } 
+  .clss-bgc-green {
+    background-color: #18aa48; /* Green background */
+  }
+  .clss-bgc-gray{
+     background-color: #f0f0f0;
+  }
+  .clss-p10 {
+    padding: 10px;
+  }
+  .clss-p510 {
+    padding: 5px 10px;
+  }
+  .clss-pt-10 {
+    padding-top: 10px;
+  }
+  .clss-pt-15 {
+    padding-top: 15px;
+  }
+  .clss-mt-20 {
+    padding-top: 10px;
+  }
+  .clss-table-material .clss-cell{
+   padding: 8px 5px;
+   vertical-align: middle;
+  }
+  .clss-up{
+    text-transform: uppercase;
+  }
+  .clss-camel{
+    text-transform: capitalize;
+  }
+  .clss-lower{
+    text-transform: lowercase;
+  }
+  .clss-bg-y{
+    background-color: #ffff07 !important; /* Light yellow background */
+  }
+  </style>
+</head>
+<body style="font-family: Arial, sans-serif; font-size: 12px;">
+  <!-- Header with logo and company info -->
+<table class="clss-table">
+  <tr>
+    <td colspan="3" width="33%" class="clss-no-border clss-fsize-14">
+      <a href="tel:+919775550672">9775550672</a><br>
+      <a href="tel:+918777414403">8777414403</a><br>
+      <a href="tel:+919732550550">9732550550</br><br>
+      <a href="mailto:contact@tdsolar.in">contact@tdsolar.in</a><br>
+      <a href="www.tdsolar.in">www.tdsolar.in</a><br>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-pt-15" style="text-align: left;vertical-align: top;">
+      <strong class="clss-fsize-14 clss-fb clss-textc-white clss-bgc-green clss-p510">TD SOLAR (Technical Dwipayan)</strong><br><br>
+      GR FL SHOP NO 2&amp;5, RAJNANDINI VILLA,<br>
+      KHARDAHA THANA ROAD 45,<br>
+      NORTH 24 PARGANAS,<br>
+      KOLKATA - 700116<br>
+      <strong>GSTIN: 19ASPPD1614E1ZZ</strong>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-tr">
+      <img src="https://tdsolar.in/cdn_images/logo.png" alt="Company Logo" style="width: 230px; height: 120px;">
+    </td>
+  </tr>
+</table>
+
+<!-- To, From, and Invoice Details (3-column layout) -->
+<table class="clss-table" style="margin-top: 4px;">
+  <tr>
+    <td class="clss-cell clss-camel" width="33%">
+       <strong class="clss-up">Buyer Details</strong><br><br>
+      <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
+       <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-p0 clss-m0" width="34%">
+      <table class="clss-table">
+        <tr>
+          <td class="clss-cell clss-bl-0 clss-bt-0" width="50%">Invoice Date</td>
+          <td class="clss-cell clss-br-0 clss-bt-0" width="50%"><%= proposalDate ? proposalDate : '-' %></td>
+        </tr>
+         <tr>
+          <td class="clss-cell clss-bl-0">Proforma Invoice No.</td>
+          <td class="clss-cell clss-br-0"><%= invoiceNumber %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Code</td>
+          <td class="clss-cell clss-br-0"><%= clientId%></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Mobile</td>
+          <td class="clss-cell clss-br-0"><%= clientMobile ? clientMobile : '' %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <h2 style="text-align:center;margin: 0; padding:0.5rem 1rem 0.5rem 1rem;" class="clss-header clss-bg-y">DOMESTIC PROFORMA INVOICE</h2>
+  <h4 style="text-align:left;margin: 0; padding:10px 5px;" class="clss-header"> Project Type : <%= (moduleWatt*quantity*0.001)+' KW '+systemType  %></h4>
+
+
+<!--DEVIDER-->
+<!-- Material list STtrts-->
+<table class="clss-table clss-table-material">
+  <tr class="clss-header">
+    <td class="clss-cell" width="85%">Commodity Description :</td>
+    <td class="clss-cell clss-tc">Qty</td>
+  </tr>
+  <!--SOLAR MODULE 1-->
+    <tr>
+      <td class="clss-cell">
+        01. PV Module : &nbsp;- <%= (brand ? brand :'')+' '+(type ? type :'')+' '+(+' '+moduleTechnology ? moduleTechnology : '')+' '+(moduleWatt ? moduleWatt+'W' : '') %><br>
+      </td>
+      <td class="clss-cell clss-tc"><%= quantity %> <%= quantity == 1 ? 'No' : 'Nos' %></td>
+    </tr>
+    <tr>
+      <td class="clss-cell">
+        02. DC Copper Cable (As per Requirement )<br>
+        03. MC4 Solar Connectors (male and female)<br>
+        04. DC Junction Box(if Required)<br>
+        05. PVC Pipe & Connectors, fastener clips, Wire Ties<br>
+        06. Structure including Nut & Bolts with cement concrete(1:2:4) (Tata Squre Bar )<br>
+        07. Lighting Arrestor(LA) & Earthing with 10Sqmm Aluminum Cable, Spike Rod 1.5 Meter, Pit Cover Bulti, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+        08. Direct Current Distribution box (DCDB) & Earthing with 10Sqmm Aluminum Cable, Spike Rod, Pit Cover Bulti, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+        09. Earthing Bus-Bar<br>
+      </td>
+      <td class="clss-cell clss-tc">Full Set</td>
+    </tr>
+    <tr>
+      <td class="clss-cell">
+       10. Inverter : &nbsp;-  <%= systemType +' '+inverterBrand+' '+inverterPower+' KW' %><br>
+      </td>
+      <td class="clss-cell clss-tc"><%= inverterQuantity %> <%= inverterQuantity == 1 ? 'No' : 'Nos' %></td>
+    </tr>
+    <tr>
+      <td class="clss-cell">
+       11. Solar Battery : <%= batteryQuantity >= 1 ?  (batteryBrand+' '+batteryType+' '+batteryCapacity): 'Not Applicable for this System' %><br>
+      </td>
+      <td class="clss-cell clss-tc"><%= batteryQuantity == 0 ? '-' : batteryQuantity == 1 ? batteryQuantity+' No' : batteryQuantity+' Nos' %></td>
+    </tr>
+    <tr>
+      <td class="clss-cell">
+        12. AC Copper Cable (As per Requirement )<br>
+        13. Alternating Current Distribution box (ACDB) & Earthing with 10Sqmm Aluminum Cable, Spike Rod, Pit Cover Bulti, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+      </td>
+      <td class="clss-cell clss-tc">Full Set</td>
+    </tr>
+    <tr>
+      <td class="clss-cell">
+       <b>Materials Required at time of Net Metering Installation from DISCOM-WBSEDCL/CESC</b><br>
+       14. Isolator for Solar AC<br>
+       15. AC Load Bus-Bar<br>
+       16. Isolator for Generation Meter<br>
+       17. Isolator for Net Metering<br>
+      </td>
+      <td class="clss-cell clss-tc"><%= systemConnection == 'With Net Metering' ? '1 Set' : 'NA'%></td>
+    </tr>
+</table>
+<!--Material List END-->
+
+<!--Project Cost Starts-->
+<br>
+  <%
+  // Helper function to round to 2 decimal places
+  function round2(value) {
+     // Convert input to number (handles both strings and numbers)
+    const num = Number(value);
+    if (isNaN(num)) {
+        throw new Error(`Cannot convert '${value}' to a number`);
+    }
+
+    // Round to 2 decimal places (instead of truncating)
+    const roundedNum = Math.round(num * 100) / 100;
+
+    // Force 2 decimal places (e.g., 100 → "100.00", 12.8 → "12.80")
+    const formattedNum = roundedNum.toFixed(2);
+
+    // Return as number (or string if preferred)
+    return Number(formattedNum);
+}
+
+  // Calculate supply value and GST
+  const supplyValue = round2(totalProjectValue * supplyPercentage * 0.01);
+  const supplyBasePrice_EXGST = round2(supplyValue * (100 / 112));
+  const supplyBasePriceAfterDiscount_EXGST = round2(supplyBasePrice_EXGST - materialDiscount);
+  const supplyAfterDiscount_GSTAmount = round2(supplyBasePriceAfterDiscount_EXGST * 0.12);
+  const supplyAfterDiscount_IncGST = round2(supplyBasePriceAfterDiscount_EXGST + supplyAfterDiscount_GSTAmount); //A
+
+  // Calculate Installation value and GST
+  const installationValue = round2(totalProjectValue * (100 - supplyPercentage) * 0.01);
+  const installationBasePrice_EXGST = round2(installationValue * (100 / 118));
+  const installationBasePriceAfterDiscount_EXGST = round2(installationBasePrice_EXGST - installationDiscount);
+  const installationAfterDiscount_GSTAmount = round2(installationBasePriceAfterDiscount_EXGST * 0.18);
+  const installationAfterDiscount_IncGST = round2(installationBasePriceAfterDiscount_EXGST + installationAfterDiscount_GSTAmount);  //B
+
+  // calculation of total Supply + Installation
+  const totalBasePrice_EXGST = round2(supplyBasePrice_EXGST + installationBasePrice_EXGST);
+  const totalDiscount = round2(materialDiscount + installationDiscount);
+  const totalPriceAfterDiscount_EXGST = round2(totalBasePrice_EXGST - totalDiscount);
+  const totalGST = round2(supplyAfterDiscount_GSTAmount + installationAfterDiscount_GSTAmount);
+  const totalPriceIncGST = round2(totalPriceAfterDiscount_EXGST + totalGST); //A+B
+
+  //Base Rate of Aditonal Works of Erection Parts
+  const aditionalWorksBasePrice_EXGST = round2(extraHeightTotalCost)+ round2(transportationCost) + round2(miscellaneousExpenses) + round2(liaisonCost);
+  const aditionalWorksAfterDiscount_EXGST = round2(aditionalWorksBasePrice_EXGST) - round2(erectionDiscount);
+  const aditionalWorksAfterDiscount_GSTAmount = round2(aditionalWorksAfterDiscount_EXGST * 0.18);
+  const aditionalWorksAfterDiscount_IncGST = round2(aditionalWorksAfterDiscount_EXGST + aditionalWorksAfterDiscount_GSTAmount); // C
+
+  // Net Metering / Net Billing Cost
+  const netMeteringNetBillingPrice_IncGST = round2(applicationCost) + round2(meterCost) + round2(caCertificate) + round2(fitnessCertificate);
+  const netMeteringNetBillingPrice_AfterDiscount_IncGST = round2(netMeteringNetBillingPrice_IncGST) - round2(netMeteringDiscount); // D
+
+  //Final Amount Calculation
+  const finalInvoiceAmount = round2(totalPriceIncGST + aditionalWorksAfterDiscount_IncGST + netMeteringNetBillingPrice_AfterDiscount_IncGST); // A + B + C + D
+
+
+  // When displaying, use .toFixed(2) for formatting
+%>
+<table class="clss-table clss-table-material clss-mt-20">
+  <caption class="clss-title clss-tl">Project Cost</caption>
+  <tr class="clss-header">
+    <td class="clss-cell" width="85%">Commodity Description</td>
+    <td class="clss-cell clss-tr">Amount in ₹</td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+      Design, All Material Supply Commissioning - Base Price<br>
+      Material Discount (if any)<br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= supplyBasePrice_EXGST.toFixed(2) %><br>
+      <%= materialDiscount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+      Design, All Material Supply Commissioning - After Discount<br>
+      <b>GST 12% </b>Against Design, All Material Supply Commissioning<br>
+    </td>
+    <td class="clss-cell clss-tr">
+     <%= supplyBasePriceAfterDiscount_EXGST.toFixed(2) %><br>
+      <%= supplyAfterDiscount_GSTAmount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr class="clss-header">
+    <td class="clss-cell">
+      <b>Final Price (Including GST) of Design, All Material Supply Commissioning - (A)</b><br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= supplyAfterDiscount_IncGST.toLocaleString('en-IN') %><br>
+    </td>
+  </tr>
+</table>
+<!-- Page Break  -->
+<br><br><br><br>
+<p class="clss-tr" style="margin-bottom: 150px;">Page 1 of 2 </p>
+<br>
+
+<!-- Page Break  -->
+<table class="clss-table clss-table-material" style="margin-top: 10px;">
+  <tr class="clss-header">
+    <td class="clss-cell" width="85%">Commodity Description</td>
+    <td class="clss-cell clss-tr">Amount in ₹</td>
+  </tr>
+  <tr>
+    <td class="clss-cell" width="85%">
+      Project Cost for Installation & Testing - Base Price<br>
+      Installation Discount (if any)<br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= installationBasePrice_EXGST.toFixed(2) %><br>
+      <%= installationDiscount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+      Project Cost for Installation & Testing -After Discount<br>
+      GST 18% Against Project Cost for Installation & Testing <br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= installationBasePriceAfterDiscount_EXGST.toFixed(2) %><br>
+      <%= installationAfterDiscount_GSTAmount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr class="clss-header">
+    <td class="clss-cell">
+      <b>Final Price (Including GST) of Project Cost for Installation & Testing - (B)</b><br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= installationAfterDiscount_IncGST.toLocaleString('en-IN') %><br>
+    </td>
+  </tr>
+</table>
+
+<!--Tota Material + Installation Cost-->
+<table class="clss-table clss-table-material">
+  <tr>
+    <td class="clss-cell" width="85%">
+     Total Base Price Of Solar System (Supply Materials + Installations )<br>
+      Total Discount Against Solar System (if any)<br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= totalBasePrice_EXGST.toFixed(2) %><br>
+      <%= totalDiscount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+     Total Price After Discount (Supply Materials & Erection )<br>
+      Total GST (Supply Materials 12% & Erection 18%) <br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= totalPriceAfterDiscount_EXGST.toFixed(2) %><br>
+      <%= totalGST.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr class="clss-header">
+    <td class="clss-cell">
+      <b>Total Price (Including GST) of Solar System (Supply Materials & Erection ) - (A + B)</b><br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= totalPriceIncGST.toLocaleString('en-IN') %><br>
+    </td>
+  </tr>
+</table>
+<!--Tota Material + Installation Cost Ends-->
+
+<br>
+
+<!--Aditonal Works of Erection Parts starts-->
+<table class="clss-table clss-table-material">
+  <caption class="clss-title clss-tl">Cost of Aditonal Works of Erection Parts (if any)</caption>
+  <tr>
+    <td class="clss-cell" width="85%">
+     Extra Hight per feet( Upto 3KW- 800 Rs / Up to 5KW - 1000 Rs)<br>
+     Transportation Charges- <br>
+     Others Miscellaneous Expenses- <br>
+     Liaison with WBSEDCL Or CESC for Metering- <br>
+    </td>
+    <td class="clss-cell clss-tr">
+      <%= extraHeightTotalCost.toFixed(2) %><br>
+      <%= transportationCost.toFixed(2) %><br>
+      <%= miscellaneousExpenses.toFixed(2) %><br>
+      <%= liaisonCost.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+     Base Rate of Aditonal Works of Erection Parts<br>
+     Discount-<br>
+    </td>
+    <td class="clss-cell clss-tr">
+       <%= aditionalWorksBasePrice_EXGST.toFixed(2) %><br>
+       <%= erectionDiscount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+     Total Price After Discount<br>
+     GST 18%<br>
+    </td>
+    <td class="clss-cell clss-tr">
+       <%= aditionalWorksAfterDiscount_EXGST.toFixed(2) %><br>
+       <%= aditionalWorksAfterDiscount_GSTAmount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr class="clss-header">
+    <td class="clss-cell">
+      <b>Total Price (Including GST) of Aditonal Works of Erection Parts - (C)</b><br>
+    </td>
+    <td class="clss-cell clss-tr">
+       <%= aditionalWorksAfterDiscount_IncGST.toLocaleString('en-IN') %><br>
+    </td>
+  </tr>
+</table>
+<!--Aditonal Works of Erection Parts Ends-->
+
+<br>
+
+<!--Net Metering / Net Billing Parts starts-->
+<table class="clss-table clss-table-material">
+  <caption class="clss-title clss-tl">Cost of Net Metering / Net Billing (if any)</caption>
+  <tr>
+    <td class="clss-cell" width="85%">
+     Applacation cost for Net Metering CESC/WBSEDCL-<br>
+     Net-Meter cost. (WBSEDCL/CESC)- <br>
+     Charges for CA Certificate for legal Payment- <br>
+     Charges for Fitness Certificate of System- <br>
+    </td>
+    <td class="clss-cell clss-tr">
+       <%= applicationCost.toFixed(2) %><br>
+       <%= meterCost.toFixed(2) %><br>
+       <%= caCertificate.toFixed(2) %><br>
+       <%= fitnessCertificate.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="clss-cell">
+     Total Net Metering / Net Billing Cost<br>
+     Discount-<br>
+    </td>
+    <td class="clss-cell clss-tr">
+       <%= netMeteringNetBillingPrice_IncGST.toFixed(2) %><br>
+       <%= netMeteringDiscount.toFixed(2) %><br>
+    </td>
+  </tr>
+  <tr class="clss-header">
+    <td class="clss-cell">
+      <b>Final Price (Including GST) After Discount of Net Metering / Net Billing - (D)</b><br>
+    </td>
+    <td class="clss-cell clss-tr">
+       <%= netMeteringNetBillingPrice_AfterDiscount_IncGST.toLocaleString('en-IN') %><br>
+    </td>
+  </tr>
+</table>
+<!--Net Metering / Net Billing Parts Ends-->
+<br>
+<!--Final Billing Amount starts-->
+<table class="clss-table clss-table-material">
+  <caption class="clss-title clss-tl">Final Amount *</caption>
+  <tr class="clss-header clss-bg-y">
+    <td class="clss-cell" width="85%">
+     <b>Total Price (Including GST) of Solar System (Supply Materials & Erection ) - (A + B  + C + D )</b><br>
+     <small>*The final amount may vary depending on various Conditions.<small></small><br><br>
+    </td>
+    <td class="clss-cell clss-tr clss-fsize-18">
+       &#8377;&nbsp;<%= finalInvoiceAmount.toLocaleString('en-IN') %><br>
+    </td>
+  </tr>
+</table>
+<!--Final Billing Amount Ends-->
+
+<!--Project Cost Ends-->
+<!-- Tax breakdown -->
+ <!-- Bank & Terms -->
+<table class="clss-table" style="margin-top: 50px; margin-bottom: 0px;">
+  <tr class="clss-header">
+    <td class="clss-cell" width="33.33%"><strong>Bank Details</strong></td>
+    <td class="clss-cell" width="33.34%"><strong>Terms & Conditions</strong></td>
+    <td class="clss-cell clss-tc" width="33.33%"><strong>For TD Solar (Technical Dwipayan)</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell" valign="top">
+      A/C NAME - TECHNICAL DWIPAYAN<br>
+      NAME OF BANK : STATE BANK OF INDIA<br>
+      BRANCH CITY : KHARDAH BRANCH<br>
+      TYPE OF ACCOUNT : CURRENT ACCOUNT<br>
+      ACCOUNT NUMBER : 41416611152<br>
+      IFSC CODE : SBIN0001899
+    </td>
+    <td class="clss-cell" valign="top">
+          1. Thank you for your business with TD SOLAR.<br>
+          2. This invoice is issued under applicable GST laws for the supply and installation of solar PV systems.<br>
+          3. Please save the invoice copy with you for your reference.<br>
+          4. For any queries, contact us at the provided phone numbers or email.
+    </td>
+    <td class="clss-cell clss-tc" valign="top">
+        <img src="https://tdsolar.in/cdn_images/stamp.png" alt="Signature" style="width: 130px; height: auto;"><br>
+        Authorized Signatory
+
+    </td>
+  </tr>
+</table>
+<!-- Signature -->
+ <table class="clss-table" style="margin-top: 5px;">
+  <tr>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: left;" width="50%">
+      <strong>Document ID:</strong> <%= _id %>
+    </td>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: right;" width="50%">
+      <span style="text-align: left;" ><strong>Document Date:</strong> </span>
+     Generated By - <%= invoiceGeneratedBy %>
+    </td>
+  </tr>
+</table>
+<p class="clss-tr" style="margin-bottom: 10px;">Page 2 of 2 </p>
+
+  
+
+
+</body>
+</html>

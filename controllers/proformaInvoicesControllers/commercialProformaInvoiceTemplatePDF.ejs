@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Commercial Proforma Invoice :: TD Solar</title>
+   <style>
+  .clss-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .clss-cell {
+    border: 1px solid #000;
+    padding: 4px 4px;
+    vertical-align: top;
+  }
+  .clss-no-border {
+    border: none;
+  }
+  .clss-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+  }
+  .clss-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .clss-total {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  .clss-p0{
+      padding: 0;
+  } 
+  .clss-m0{
+      margin: 0;
+  }
+  .clss-bl-0{
+      border-left: 0;
+  }
+  .clss-br-0{
+      border-right: 0;
+  }
+  .clss-bt-0{
+      border-top: 0;
+  }
+  .clss-bb-0{
+      border-bottom: 0;
+  }
+  .clss-tr {
+    text-align: right;
+  }
+  .clss-tc {
+    text-align: center !important;
+  }
+  .clss-tl{
+    text-align: left;
+  }
+  .clss-fb{
+      font-weight: bold;
+  }
+  .clss-fsize-18 {
+    font-size: 18px;
+  }
+  .clss-fsize-16 {
+    font-size: 16px;
+  }
+  .clss-fsize-14 {
+    font-size: 14px;
+  }
+  a{
+    text-decoration: none !important;
+    color: black;
+  }
+  .clss-textc-white{
+    color: white;
+  } 
+  .clss-bgc-green {
+    background-color: #18aa48; /* Green background */
+  }
+  .clss-bgc-gray{
+     background-color: #f0f0f0;
+  }
+  .clss-p10 {
+    padding: 10px;
+  }
+  .clss-pt-10 {
+    padding-top: 10px;
+  }
+  .clss-pt-15 {
+    padding-top: 15px;
+  }
+  .clss-p20-5 {
+    padding: 20px 5px;
+  }
+  .clss-mt-20 {
+    padding-top: 10px;
+  }
+  .clss-table-material .clss-cell{
+   padding: 8px 5px;
+   vertical-align: middle;
+  }
+  .clss-up{
+    text-transform: uppercase;
+  }
+  .clss-camel{
+    text-transform: capitalize;
+  }
+  .clss-lower{
+    text-transform: lowercase;
+  }
+  .clss-bg-y{
+    background-color: #ffff07 !important; /* Light yellow background */
+  }
+  </style>
+</head>
+<body style="font-family: Arial, sans-serif; font-size: 12px;">
+  <!-- Header with logo and company info -->
+<table class="clss-table">
+  <tr>
+    <td colspan="3" width="33%" class="clss-no-border clss-fsize-14">
+      <img src="https://tdsolar.in/cdn_images/TDlogo.png" alt="Company Logo" style="width: 80%; height: auto;">
+      <br><br>
+      <a href="tel:+919775550672">9775550672</a><br>
+      <a href="tel:+918777414403">8777414403</a><br>
+      <a href="tel:+919732550550">9732550550</br><br>
+      <a href="mailto:contact@tdsolar.in">contact@tdsolar.in</a><br>
+      <a href="www.tdsolar.in">www.tdsolar.in</a><br>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-pt-15" style="text-align: left;vertical-align: top;">
+      <span class="clss-fsize-18 clss-fb clss-textc-white clss-bgc-green clss-p10">SOLAR GREEN ENERGY</span><br><br>
+      <strong>TD SOLAR (Technical Dwipayan)</strong><br>
+      GR FL SHOP NO 2&amp;5, RAJNANDINI VILLA,<br>
+      KHARDAHA THANA ROAD 45,<br>
+      NORTH 24 PARGANAS,<br>
+      KOLKATA - 700116<br><br>
+      <strong>GSTIN: 19ASPPD1614E1ZZ</strong>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-tr">
+      <img src="https://tdsolar.in/cdn_images/logo.png" alt="Company Logo" style="width: 270px; height: 150px;">
+    </td>
+  </tr>
+</table>
+
+<!-- To, From, and Invoice Details (3-column layout) -->
+<table class="clss-table" style="margin-top: 4px;">
+  <tr>
+    <td class="clss-cell clss-camel" width="33%">
+       <strong class="clss-up">Buyer Details</strong><br><br>
+      <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
+      <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-p0 clss-m0" width="34%">
+      <table class="clss-table">
+        <tr>
+          <td class="clss-cell clss-bl-0 clss-bt-0" width="50%">Invoice Date</td>
+          <td class="clss-cell clss-br-0 clss-bt-0" width="50%"><%= proposalDate %></td>
+        </tr>
+         <tr>
+          <td class="clss-cell clss-bl-0">Proforma Invoice No.</td>
+          <td class="clss-cell clss-br-0"><%= invoiceNumber %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Code</td>
+          <td class="clss-cell clss-br-0"><%= clientId%></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Mobile</td>
+          <td class="clss-cell clss-br-0"><%= clientMobile %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <h2 style="text-align:center;margin: 0; padding:1rem;" class="clss-header clss-bg-y">COMMERCIAL PROFORMA INVOICE</h2>
+
+  <!-- Material list -->
+<table class="clss-table clss-table-material">
+  <tr class="clss-header">
+    <td class="clss-cell">SL No.</td>
+    <td class="clss-cell" width="70%">Commodity Description::3-Phase : <%= (moduleWatt*quantity*0.001)+' KW '+systemType  %></td>
+    <td class="clss-cell clss-tc">Qty</td>
+    <td class="clss-cell clss-tc">Unit</td>
+  </tr>
+  <!--SOLAR MODULE 1-->
+    <tr>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">
+        PV Module : &nbsp;- <%= (brand ? brand :'')+' '+(type ? type :'')+' '+(+' '+moduleTechnology ? moduleTechnology : '')+' '+(moduleWatt ? moduleWatt+'W' : '') %>
+      </td>
+      <td class="clss-cell clss-tc"><%= quantity %></td>
+      <td class="clss-cell clss-tc"><%= quantity == 1 ? 'No' : 'Nos' %></td>
+    </tr>
+  <!--STRUCTURE 2-->
+    <tr>
+      <td class="clss-cell">2</td>
+      <td class="clss-cell">
+        STRUCTURE :
+        <% if (stRoofRequired2 === true) { %>
+          Including Nut & Bolts with Cement Concrete(1:2:4) (Tata Squre Bar)<br>
+        <% } else if (stTinRequired2 === true) { %>
+          Aluminum Mounting Structure For Tin Shed
+        <% } else { %>
+          Not required
+        <% } %>
+      </td>
+      <td class="clss-cell clss-tc"><%= (stRoofRequired2 || stTinRequired2) ? 1 :'-' %></td>
+      <td class="clss-cell clss-tc"><%= (stRoofRequired2 || stTinRequired2) ? 'Set' :'-' %></td>
+    </tr>
+   <!--MATERIAL 1 DC copper wire etc-->
+    <tr>
+      <td class="clss-cell">3</td>
+      <td class="clss-cell">
+        DC &nbsp;<%= mat1DCCableMaterial ? mat1DCCableMaterial : 'Copper' %> Cable (As per Requirement )<br>
+        MC4 Solar Connectors (male and female)<br>
+        DC Junction Box<br>
+        PVC Pipe & Connectors, fastener clips, Wire Ties<br>
+        Lighting Arrestor(LA) & Earthing with GI Strip/10Sqmm Aluminum Cable,<br>
+        Pipe2.5 Meter, Pit Mount Hole Cover, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+        Direct Current Distribution box (DCDB) & Earthing with GI Strip/10Sqmm Aluminum Cable,<br>
+        Pipe2.5 Meter, Pit Mount Hole Cover, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+        Earthing Bus-Bar
+      </td>
+      <td class="clss-cell clss-tc"><%= mat1Required3 ? 1 :'-' %></td>
+      <td class="clss-cell clss-tc"><%= mat1Required3 ? 'Set' :'-' %></td>
+    </tr>
+
+   <!--INVERTER -->
+    <tr>
+      <td class="clss-cell">4</td>
+      <td class="clss-cell">
+        INVERTER : <%= invRequired4 ? (inverterBrand+' '+inverterPower+'kW') : 'Not Applicable for this System' %><br>
+      </td>
+      <td class="clss-cell clss-tc"><%= invRequired4 ? inverterQuantity : '-' %> </td>
+      <td class="clss-cell clss-tc"><%= invRequired4 ? (inverterQuantity == 1 ? 'No' : 'Nos') : '-' %></td>
+    </tr>
+
+   <!--Material 2: AC CABELS: Group 5: -->
+    <tr>
+      <td class="clss-cell">5</td>
+      <td class="clss-cell">
+        AC &nbsp;<%= mat2ACCableMaterial ? mat2ACCableMaterial : 'Aluminum' %> Cable (As per Requirement )<br>
+        Alternating Current Distribution box (ACDB) & Earthing with GI Strip/10Sqmm Aluminum Cable,<br>
+        Pipe2.5 Meter, Pit Mount Hole Cover, Nut & Bolts, wire fastener clips, Wire Ties.
+      </td>
+      <td class="clss-cell clss-tc"><%= mat2Required5 ? 1 : '-' %></td>
+      <td class="clss-cell clss-tc"><%= mat2Required5 ? 'Set' : '-' %></td>
+    </tr>
+
+   <!-- Group 6: Bus MCB -->
+    <tr>
+      <td class="clss-cell">6</td>
+      <td class="clss-cell">
+        Bus-Bar and MCB  <%= busMcbRequired6 ? '' : ': Not Applicable for this System' %><br>
+      </td>
+      <td class="clss-cell clss-tc"><%= busMcbRequired6 ? 1 : '-' %></td>
+      <td class="clss-cell clss-tc"><%= busMcbRequired6 ? 'Set' : '-' %></td>
+    </tr>
+
+   <!-- Group 7: Fire Extinguisher -->
+    <tr>
+      <td class="clss-cell">7</td>
+      <td class="clss-cell">
+        <strong>Fire Extinguisher <%= fireERequired7 ? '' : ': Not Applicable for this System' %></strong>
+      </td>
+       <td class="clss-cell clss-tc"><%= fireERequired7 ? 1 : '-' %></td>
+      <td class="clss-cell clss-tc"><%= fireERequired7 ? 'Set' : '-' %></td>
+    </tr>
+
+   <!-- Group 8: Auto Cleaning -->
+    <tr>
+      <td class="clss-cell">8</td>
+      <td class="clss-cell">
+        <strong>Automatic Sprinkler System for Solar Panel Cleaning Using Water <%= autoCleanRequired8 ? '' : ': Not Applicable for this System' %></strong>
+      </td>
+       <td class="clss-cell clss-tc"><%= autoCleanRequired8 ? 1 : '-' %></td>
+      <td class="clss-cell clss-tc"><%= autoCleanRequired8 ? 'Set' : '-' %></td>
+    </tr>
+
+  <!-- Calculation Amount -->
+    <tr class="clss-header">
+      <td class="clss-cell" colspan="2" style="text-align: right;"><strong>PriceIncluding GST:</strong></td>
+      </td>
+      <td class="clss-cell clss-tc"> <%= pricePerWattIncGst %></td>
+      <td class="clss-cell clss-tc">Per Watt</td>
+    </tr>
+    <tr class="clss-header">
+      <td class="clss-cell" colspan="2" style="text-align: right;"><strong>Total PV Module Watt:</strong></td>
+      </td>
+      <td class="clss-cell clss-tc"> <%= moduleWatt*quantity %></td>
+      <td class="clss-cell clss-tc">Watt</td>
+    </tr>
+    <tr class="clss-header clss-bg-y">
+      <td class="clss-cell clss-fsize-18" style="text-align: right;" colspan="2">Final Amount:</td>
+      <td class="clss-cell clss-fsize-18"> &#8377;&nbsp;<%= (pricePerWattIncGst*moduleWatt*quantity).toLocaleString('en-IN') %></td>
+      <td class="clss-cell">Including GST</td>
+    </tr>
+</table>
+
+<!-- New table for Total Amount (Inc GST) -->
+
+
+<!--DEVIDER-->
+
+
+<!-- Tax breakdown -->
+ <!-- Bank & Terms -->
+<table class="clss-table" style="margin-top: 10px; margin-bottom: 10px;">
+  <tr class="clss-header">
+    <td class="clss-cell" width="33.33%"><strong>Bank Details</strong></td>
+    <td class="clss-cell" width="33.34%"><strong>Terms & Conditions</strong></td>
+    <td class="clss-cell clss-tc" width="33.33%"><strong>For TD Solar (Technical Dwipayan)</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell" valign="top">
+      A/C NAME - TECHNICAL DWIPAYAN<br>
+      NAME OF BANK : STATE BANK OF INDIA<br>
+      BRANCH CITY : KHARDAH BRANCH<br>
+      TYPE OF ACCOUNT : CURRENT ACCOUNT<br>
+      ACCOUNT NUMBER : 41416611152<br>
+      IFSC CODE : SBIN0001899
+    </td>
+    <td class="clss-cell" valign="top">
+          1. Thank you for your business with TD SOLAR.<br>
+          2. This invoice is issued under applicable GST laws for the supply and installation of solar PV systems.<br>
+          3. Please save the invoice copy with you for your reference.<br>
+          4. For any queries, contact us at the provided phone numbers or email.
+    </td>
+    <td class="clss-cell clss-tc" valign="top">
+        <img src="https://tdsolar.in/cdn_images/stamp.png" alt="Signature" style="width: 130px; height: auto;"><br>
+        Authorized Signatory
+
+    </td>
+  </tr>
+</table>
+<!-- Signature -->
+ <table class="clss-table" style="margin-top: 5px; margin-bottom:5px;">
+  <tr>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: left;" width="50%">
+      <strong>Document ID:</strong> <%= _id%>
+    </td>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: right;" width="50%">
+      <span style="text-align: left;" ><strong>Document Date:</strong> </span>
+     Generated By - <%= invoiceGeneratedBy %>
+    </td>
+  </tr>
+</table>
+<div class="clss-tr"><small >Page 1 of 2</small></div>
+<br>
+
+<!-- GST & IT Benifits starts-->
+ <%
+  // Helper function to round to 2 decimal places
+  function round2(value) {
+     // Convert input to number (handles both strings and numbers)
+    const num = Number(value);
+    if (isNaN(num)) {
+        throw new Error(`Cannot convert '${value}' to a number`);
+    }
+
+    // Round to 2 decimal places (instead of truncating)
+    const roundedNum = Math.round(num * 100) / 100;
+
+    // Force 2 decimal places (e.g., 100 → "100.00", 12.8 → "12.80")
+    const formattedNum = roundedNum.toFixed(2);
+
+    // Return as number (or string if preferred)
+    return Number(formattedNum);
+}
+
+  // Calculate supply value and GST
+  const totalInvoiceAmount = round2(pricePerWattIncGst*moduleWatt*quantity);
+  const supplyAmount= round2(totalInvoiceAmount * (supplyPercentage ? (round2(supplyPercentage)*0.01) : 0.8)); // 80% of total invoice amount for supply;
+  const supplyGST = round2(supplyAmount * (12/112)); // 12% GST on supply amount
+  const supplyAmount_ExGST = round2(supplyAmount - supplyGST);
+
+  const installationAmount = round2(totalInvoiceAmount * (supplyPercentage ? ((100 - round2(supplyPercentage))*0.01) : 0.2));// 20% of total invoice amount for installation
+  const installationGST = round2(installationAmount * (18/118)); // 18  % GST on installation amount
+  const installationAmount_ExGST = round2(installationAmount - installationGST);
+
+  const total_Gst = round2(supplyGST + installationGST);
+  const total_ExGST = round2(supplyAmount_ExGST + installationAmount_ExGST);
+
+  // IT Benifits calculation
+   // IT Benifits calculation
+  const projectValue_1 = total_ExGST; // Total Project Value
+  const depreciationValue_1 = round2(projectValue_1 * 0.4); // 40% of project value
+  const itBenefits_1 = round2(depreciationValue_1 * 0.3); // 30% of depreciation value as IT benefits
+  const projectValue_2 = round2(projectValue_1 * (1 - 0.4)); // 60% of project value after 1st year depreciation
+  const depreciationValue_2 = round2(projectValue_2 * 0.2); // 20% of remaining project value
+  const itBenefits_2 = round2(depreciationValue_2 * 0.3); // 20% of depreciation value as IT benefits
+  const totalITBenefits = round2(itBenefits_1 + itBenefits_2); // Total IT benefits for 2 years
+
+  const totalGstAndITBenefits = round2(total_Gst + totalITBenefits); // Total GST and IT benefits combined
+  const actualProjectValue = round2(totalInvoiceAmount - totalGstAndITBenefits); // Actual project value after deducting GST and IT benefits
+  const actualPerWattPrice = round2(actualProjectValue / (moduleWatt * quantity)); // Actual price per watt after deducting GST and IT benefits
+  const benifitPercentage = round2((totalGstAndITBenefits / totalInvoiceAmount) * 100); // Percentage of GST and IT benefits from total invoice amount
+
+
+
+  // When displaying, use .toFixed(2) for formatting
+%>
+ <div style="background-color: #f8f9fa; border-left: 5px solid #28a745; padding: 15px 20px; margin-bottom: 20px; margin-top:5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="color: #28a745; margin: 0;">GST & IncomeTax BENIFITS</h2>
+  </div>
+<table class="clss-table" style="margin-top: 20px; margin-bottom: 10px;">
+  <caption class="clss-title clss-tl">GST Benefits</caption>
+  <tr class="clss-header">
+    <td class="clss-cell clss-p20-5"><strong>Calculation of GST Benefits</strong></td>
+    <td class="clss-cell clss-p20-5"><strong>Excluding GST</strong></td>
+    <td class="clss-cell clss-p20-5 clss-tc"><strong>GST %</strong></td>
+    <td class="clss-cell clss-p20-5"><strong>GST Benefits</strong></td>
+    <td class="clss-cell clss-p20-5 clss-tc"><strong>Including GST</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell">Supply Materials of Solar System (80% of Project Value)</td>
+    <td class="clss-cell clss-tr"><%= supplyAmount_ExGST.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tc">12%</td>
+    <td class="clss-cell clss-tr"><%= supplyGST.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr"><%= supplyAmount.toLocaleString('en-IN') %></td>
+  </tr>
+  <tr>
+    <td class="clss-cell">Transportation, Installtion and Commisioning (20% of Project Value)</td>
+    <td class="clss-cell clss-tr"><%= installationAmount_ExGST.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tc">18%</td>
+    <td class="clss-cell clss-tr"><%= installationGST.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr"><%= installationAmount.toLocaleString('en-IN') %></td>
+  </tr>
+  <tr class="clss-total">
+    <td class="clss-cell">Total GST Benifits (A)</td>
+    <td class="clss-cell clss-tr"><%= total_ExGST.toLocaleString('en-IN') %></td>
+    <td class="clss-cell"></td>
+    <td class="clss-cell clss-bg-y clss-fsize-18 clss-tr"><%= total_Gst.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr"><%= totalInvoiceAmount.toLocaleString('en-IN') %></td>
+  </tr>
+</table>
+
+<!--IT benifits-->
+<table class="clss-table" style="margin-top: 15px; margin-bottom: 0px;">
+  <caption class="clss-title clss-tl">IT Benefits</caption>
+  <tr class="clss-header">
+    <td class="clss-cell clss-p20-5"><strong>Depreciation on solar panels is governed by Section 32 of the Income-tax Act, 1961. According to this provision, businesses can depreciate their solar power system at a much faster rate than other assets</strong></td>
+    <td class="clss-cell clss-p20-5"><strong>Total Project Value</strong></td>
+    <td class="clss-cell clss-p20-5 clss-tc"><strong>Depreciation Value</strong></td>
+    <td class="clss-cell clss-p20-5"><strong>30 Per cent benefits from IT againt Depreciation Value</strong></td>
+    <td class="clss-cell clss-p20-5 clss-tc"><strong>Percentage %</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell">1st Year</td>
+    <td class="clss-cell clss-tr"> <%= projectValue_1.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tc"><%= depreciationValue_1.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr"><%= itBenefits_1.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr">40%</td>
+  </tr>
+  <tr>
+    <td class="clss-cell">2nd Year</td>
+    <td class="clss-cell clss-tr"><%= projectValue_2.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tc"><%= depreciationValue_2.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr"><%= itBenefits_2.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr">20%</td>
+  </tr>
+  <tr class="clss-total">
+    <td class="clss-cell clss-fsize-16">Total IT Benefits (B)</td>
+    <td class="clss-cell"></td>
+    <td class="clss-cell"></td>
+    <td class="clss-cell clss-bg-y clss-fsize-16 clss-tr"><%= totalITBenefits.toLocaleString('en-IN') %></td>
+    <td class="clss-cell clss-tr"></td>
+  </tr>
+  <!--Tota GST + IT benifits-->
+<tr class="clss-total clss-fsize-16">
+  <td class="clss-cell" colspan="3">Total GST + IT Benefits ( A+B)</td>
+  <td class="clss-cell clss-fsize-16 clss-tr" style="background-color:#6f9 !important;"><%= totalGstAndITBenefits.toLocaleString('en-IN') %></td>
+  <td class="clss-cell"></td>
+</tr>
+<tr class="clss-total clss-fsize-16">
+  <td class="clss-cell" colspan="3">Actual Solar Project Cost</td>
+  <td class="clss-cell clss-fsize-16 clss-tr" style="background-color: rgb(255, 161, 161) !important;"><%= actualProjectValue.toLocaleString('en-IN') %></td>
+  <td class="clss-cell"></td>
+</tr>
+<tr class="clss-total ">
+  <td class="clss-cell clss-fsize-16" colspan="3">Actual Per Watt Cost</td>
+  <td class="clss-cell clss-fsize-16 clss-tr" style="background-color: #6f9 !important;"><%= actualPerWattPrice.toLocaleString('en-IN') %></td>
+  <td class="clss-cell" style="color: red; padding: 5px 0"><%= benifitPercentage.toFixed(2)+'% Benifit' %></td>
+</tr>
+</table>
+
+<!--Tota GST + IT benifits-->
+
+
+<!-- IT Benefits -->
+  <div style="background-color: #f8f9fa; border-left: 5px solid #28a745; padding: 15px 20px; margin-bottom: 30px; margin-top:35px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h3 style="color: #28a745; margin-top: 0;">Accelerated Depreciation for Solar in India</h3>
+        
+        <p style="font-size: 16px;">Accelerated depreciation on solar panels is governed by <strong>Section 32 of the Income-tax Act, 1961</strong>. According to this provision, businesses can depreciate their solar power system at a much faster rate than other assets.</p>
+    </div>
+
+    <div style="background-color: #e9f7ef; padding: 15px 20px; border-radius: 5px; margin-bottom: 30px;">
+        <h5 style="color: #218838; margin-top: 0;">Solar Depreciation Rate Guidelines</h5>
+        
+        <ul style="padding-left: 20px;">
+            <li style="margin-bottom: 10px;">
+                <span style="font-weight: bold; color: #218838;">40% depreciation</span> can be claimed in the <span style="font-weight: bold;">first year</span> of operation
+            </li>
+            <li style="margin-bottom: 10px;">
+                An additional <span style="font-weight: bold; color: #218838;">20% depreciation</span> can be claimed in the <span style="font-weight: bold;">second year</span>
+            </li>
+            <li>
+                Making it a total of <span style="font-weight: bold; color: #218838;">60% depreciation</span> in the first two years
+            </li>
+        </ul>
+    </div>
+
+    <div style="background-color: #d4edda; padding: 15px 20px; border-radius: 5px; border: 1px solid #c3e6cb;">
+        <h3 style="margin-top: 0; color: #155724;">Tax Benefits</h3>
+        <p style="margin-bottom: 0;">This allows businesses to recover a large portion of their solar investment quickly, providing them with substantial tax relief in the initial years of the asset's life.</p>
+    </div>
+
+    <div style="margin-top: 10px; font-size: 14px; color: #6c757d; text-align: center;">
+        <p>Note: Always consult with a tax professional for exact calculations based on your specific situation.</p>
+    </div>
+    <div class="clss-tr"><small >Page 2 of 2</small></div>
+<!-- DEVIDER -->
+<!-- GST & IT Benifits ends-->
+
+
+</body>
+</html>

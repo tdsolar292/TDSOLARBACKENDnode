@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Commercial Proforma Invoice :: TD Solar</title>
+   <style>
+  .clss-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .clss-cell {
+    border: 1px solid #000;
+    padding: 4px 4px;
+    vertical-align: top;
+  }
+  .clss-no-border {
+    border: none;
+  }
+  .clss-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+  }
+  .clss-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .clss-total {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  .clss-p0{
+      padding: 0;
+  } 
+  .clss-m0{
+      margin: 0;
+  }
+  .clss-bl-0{
+      border-left: 0;
+  }
+  .clss-br-0{
+      border-right: 0;
+  }
+  .clss-bt-0{
+      border-top: 0;
+  }
+  .clss-bb-0{
+      border-bottom: 0;
+  }
+  .clss-tr {
+    text-align: right;
+  }
+  .clss-tc {
+    text-align: center;
+  }
+  .clss-tl{
+    text-align: left;
+  }
+  .clss-fb{
+      font-weight: bold;
+  }
+  .clss-fsize-18 {
+    font-size: 18px;
+  }
+  .clss-fsize-16 {
+    font-size: 16px;
+  }
+  .clss-fsize-14 {
+    font-size: 14px;
+  }
+  a{
+    text-decoration: none !important;
+    color: black;
+  }
+  .clss-textc-white{
+    color: white;
+  } 
+  .clss-bgc-green {
+    background-color: #18aa48; /* Green background */
+  }
+  .clss-bgc-gray{
+     background-color: #f0f0f0;
+  }
+  .clss-p10 {
+    padding: 10px;
+  }
+  .clss-pt-10 {
+    padding-top: 10px;
+  }
+  .clss-pt-15 {
+    padding-top: 15px;
+  }
+  .clss-mt-20 {
+    padding-top: 10px;
+  }
+  .clss-table-material .clss-cell{
+   padding: 8px 5px;
+   vertical-align: middle;
+  }
+  .clss-up{
+    text-transform: uppercase;
+  }
+  .clss-camel{
+    text-transform: capitalize;
+  }
+  .clss-lower{
+    text-transform: lowercase;
+  }
+  </style>
+</head>
+<body style="font-family: Arial, sans-serif; font-size: 12px;">
+  <!-- Header with logo and company info -->
+<table class="clss-table">
+  <tr>
+    <td colspan="3" width="33%" class="clss-no-border clss-fsize-14">
+      <img src="https://tdsolar.in/cdn_images/TDlogo.png" alt="Company Logo" style="width: 80%; height: auto;">
+      <br><br>
+      <a href="tel:+919775550672">9775550672</a><br>
+      <a href="tel:+918777414403">8777414403</a><br>
+      <a href="tel:+919732550550">9732550550</br><br>
+      <a href="mailto:contact@tdsolar.in">contact@tdsolar.in</a><br>
+      <a href="www.tdsolar.in">www.tdsolar.in</a><br>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-pt-15" style="text-align: left;vertical-align: top;">
+      <span class="clss-fsize-18 clss-fb clss-textc-white clss-bgc-green clss-p10">SOLAR GREEN ENERGY</span><br><br>
+      <strong>TD SOLAR (Technical Dwipayan)</strong><br>
+      GR FL SHOP NO 2&amp;5, RAJNANDINI VILLA,<br>
+      KHARDAHA THANA ROAD 45,<br>
+      NORTH 24 PARGANAS,<br>
+      KOLKATA - 700116<br><br>
+      <strong>GSTIN: 19ASPPD1614E1ZZ</strong>
+    </td>
+    <td colspan="3" width="33%" class="clss-no-border clss-tr">
+      <img src="https://tdsolar.in/cdn_images/logo.png" alt="Company Logo" style="width: 270px; height: 150px;">
+    </td>
+  </tr>
+</table>
+
+<!-- To, From, and Invoice Details (3-column layout) -->
+<table class="clss-table" style="margin-top: 4px;">
+  <tr>
+    <td class="clss-cell clss-camel" width="33%">
+       <strong class="clss-up">Buyer Details</strong><br><br>
+      <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
+      <strong><%= clientName ? clientName : '' %></strong><br>
+        <%= clientAddress ? clientAddress : '' %><br>
+        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%= clientMobile ? clientMobile : '' %><br>
+        <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
+    </td>
+    <td class="clss-cell clss-p0 clss-m0" width="34%">
+      <table class="clss-table">
+        <tr>
+          <td class="clss-cell clss-bl-0 clss-bt-0" width="50%">Invoice Date</td>
+          <td class="clss-cell clss-br-0 clss-bt-0" width="50%"><%= proposalDate %></td>
+        </tr>
+         <tr>
+          <td class="clss-cell clss-bl-0">Proforma Invoice No.</td>
+          <td class="clss-cell clss-br-0"><%= invoiceNumber %></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Code</td>
+          <td class="clss-cell clss-br-0"><%= clientId%></td>
+        </tr>
+        <tr>
+          <td class="clss-cell clss-bl-0">Client Mobile</td>
+          <td class="clss-cell clss-br-0"><%= clientMobile %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <h2 style="text-align:center;margin: 0; padding:1rem;" class="clss-header">COMMERCIAL PROFORMA INVOICE</h2>
+
+  <!-- Material list -->
+<table class="clss-table clss-table-material">
+  <tr class="clss-header">
+    <td class="clss-cell">SL No.</td>
+    <td class="clss-cell" width="70%">Commodity Description: Project Detail:3-Phase Solar PV System <%= (moduleWatt*quantity*0.001)+' KW ' %></td>
+    <td class="clss-cell">Qty</td>
+    <td class="clss-cell">Unit</td>
+  </tr>
+  <!--SOLAR MODULE 1-->
+  <% if (modRequired1) { %>
+    <tr>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">
+        SOLAR PV MODULS:&nbsp;<%= modBrand1+' '+modType1+' '+modTech1+' '+modRating1+'W' %>
+      </td>
+      <td class="clss-cell"><%= modQuantity1 %></td>
+      <td class="clss-cell"><%= modQUnit1 %></td>
+    </tr>
+  <% } %>
+  <!--STRUCTURE 2-->
+  <% if (stRoofRequired2 === true || stTinRequired2 === true) { %>
+    <tr>
+      <td class="clss-cell">2</td>
+      <td class="clss-cell">
+        STRUCTURE :
+        <% if (stRoofRequired2 === true) { %>
+          Including Nut & Bolts with Cement Concrete(1:2:4) (Tata Squre Bar)<br>
+        <% } %>
+        <% if (stTinRequired2 === true) { %>
+          Aluminum Mounting Structure For Tin Shed
+        <% } %>
+      </td>
+      <td class="clss-cell">
+        <% if (stRoofRequired2 === true) { %>
+          <%= stRoofQuantity2 %>
+        <% } %>
+        <% if (stTinRequired2 === true) { %>
+          <%= stTinQuantity2 %>
+        <% } %>
+      </td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+   <!--MATERIAL 1 DC copper wire etc-->
+    <% if (mat1Required3 === true ) { %>
+    <tr>
+      <td class="clss-cell">3</td>
+      <td class="clss-cell">
+        DC Copper Cable (As per Requirement )<br>
+        MC4 Solar Connectors (male and female)<br>
+        DC Junction Box<br>
+        PVC Pipe & Connectors, fastener clips, Wire Ties<br>
+        Lighting Arrestor(LA) & Earthing with GI Strip/10Sqmm Aluminum Cable,<br>
+        Pipe2.5 Meter, Pit Mount Hole Cover, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+        Direct Current Distribution box (DCDB) & Earthing with GI Strip/10Sqmm Aluminum Cable,<br>
+        Pipe2.5 Meter, Pit Mount Hole Cover, Nut & Bolts, wire fastener clips, Wire Ties.<br>
+        Earthing Bus-Bar
+      </td>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+
+   <!--INVERTER -->
+    <% if (invRequired4 === true ) { %>
+    <tr>
+      <td class="clss-cell">4</td>
+      <td class="clss-cell">
+        INVERTER : <%= invBrand4+' '+invRating4+'kW' %><br>
+      </td>
+      <td class="clss-cell"><%= invQuantity4 %> </td>
+      <td class="clss-cell"><%= invQUnit4 %></td>
+    </tr>
+  <% } %>
+
+   <!--Material 2: AC CABELS: Group 5: -->
+    <% if (mat2Required5 === true ) { %>
+    <tr>
+      <td class="clss-cell">5</td>
+      <td class="clss-cell">
+        AC Al Cable (As per Requirement )<br>
+        Alternating Current Distribution box (ACDB) & Earthing with GI Strip/10Sqmm Aluminum Cable,<br>
+        Pipe2.5 Meter, Pit Mount Hole Cover, Nut & Bolts, wire fastener clips, Wire Ties.
+      </td>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+
+   <!-- Group 6: Bus MCB -->
+    <% if (mat2Required5 === true ) { %>
+    <tr>
+      <td class="clss-cell">6</td>
+      <td class="clss-cell">
+        Bus-Bar and MCB
+      </td>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+
+   <!-- Group 7: Fire Extinguisher -->
+    <% if (fireERequired7 === true ) { %>
+    <tr>
+      <td class="clss-cell">7</td>
+      <td class="clss-cell">
+        <strong>Fire Extinguisher</strong>
+      </td>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+
+   <!-- Group 8: Auto Cleaning -->
+    <% if (autoCleanRequired8 === true ) { %>
+    <tr>
+      <td class="clss-cell">8</td>
+      <td class="clss-cell">
+        <strong>Automatic Sprinkler System for Solar Panel Cleaning Using Water</strong>
+      </td>
+      <td class="clss-cell">1</td>
+      <td class="clss-cell">Sets</td>
+    </tr>
+  <% } %>
+
+  <!-- Calculation Amount -->
+    <tr class="clss-header">
+      <td class="clss-cell" colspan="2" style="text-align: right;"><strong>PriceIncluding GST:</strong></td>
+      </td>
+      <td class="clss-cell"> <%= pricePerWattIncGst %></td>
+      <td class="clss-cell">Per Watt</td>
+    </tr>
+    <tr class="clss-header">
+      <td class="clss-cell" colspan="2" style="text-align: right;"><strong>Total PV Module Watt:</strong></td>
+      </td>
+      <td class="clss-cell"> <%= modRating1*modQuantity1 %></td>
+      <td class="clss-cell">Watt</td>
+    </tr>
+    <tr class="clss-header">
+      <td class="clss-cell" style="text-align: right;" colspan="2"><strong>Final Amount:</strong></td>
+      <td class="clss-cell"> <%= pricePerWattIncGst*modRating1*modQuantity1 %></td>
+      <td class="clss-cell">Including GST</td>
+    </tr>
+    <tr>
+      <td class="clss-cell clss-total" colspan="4" style="text-align: left;"><strong>Amount in words:</strong></td>
+    </tr>
+</table>
+
+<!-- New table for Total Amount (Inc GST) -->
+
+
+<!--DEVIDER-->
+
+
+<!-- Tax breakdown -->
+ <!-- Bank & Terms -->
+<table class="clss-table" style="margin-top: 10px; margin-bottom: 10px;">
+  <tr class="clss-header">
+    <td class="clss-cell" width="33.33%"><strong>Bank Details</strong></td>
+    <td class="clss-cell" width="33.34%"><strong>Terms & Conditions</strong></td>
+    <td class="clss-cell clss-tc" width="33.33%"><strong>For TD Solar (Technical Dwipayan)</strong></td>
+  </tr>
+  <tr>
+    <td class="clss-cell" valign="top">
+      A/C NAME - TECHNICAL DWIPAYAN<br>
+      NAME OF BANK : STATE BANK OF INDIA<br>
+      BRANCH CITY : KHARDAH BRANCH<br>
+      TYPE OF ACCOUNT : CURRENT ACCOUNT<br>
+      ACCOUNT NUMBER : 41416611152<br>
+      IFSC CODE : SBIN0001899
+    </td>
+    <td class="clss-cell" valign="top">
+          1. Thank you for your business with TD SOLAR.<br>
+          2. This invoice is issued under applicable GST laws for the supply and installation of solar PV systems.<br>
+          3. Please save the invoice copy with you for your reference.<br>
+          4. For any queries, contact us at the provided phone numbers or email.
+    </td>
+    <td class="clss-cell clss-tc" valign="top">
+        <img src="https://tdsolar.in/cdn_images/stamp.png" alt="Signature" style="width: 130px; height: auto;"><br>
+        Authorized Signatory
+
+    </td>
+  </tr>
+</table>
+<!-- Signature -->
+ <table class="clss-table" style="margin-top: 20px;">
+  <tr>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: left;" width="50%">
+      <strong>Document ID:</strong> <%= _id%>
+    </td>
+    <td class="clss-cell clss-tc" style="font-size: 10px;text-align: right;" width="50%">
+      <span style="text-align: left;" ><strong>Document Date:</strong> </span>
+     Generated By - <%= invoiceGeneratedBy %>
+    </td>
+  </tr>
+</table>
+  
+
+
+</body>
+</html>
