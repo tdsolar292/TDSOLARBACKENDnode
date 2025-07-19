@@ -1,97 +1,99 @@
 import mongoose from "mongoose";
 
 const ProformaInvoicesSchema = new mongoose.Schema({
-  otp: String,
+  otp: { type: String, default: "" },
 
   // Client Information
-  clientId: String,
-  clientIdType: String,
-  clientName: String,
-  clientMobile: String,
-  clientEmail: String,
-  clientAddress: String,
-  clientState: String,
-  clientPinCode: String,
+  clientId: { type: String, default: "" },
+  clientIdType: { type: String, default: "" },
+  clientName: { type: String, default: "" },
+  clientMobile: { type: String, default: "" },
+  clientEmail: { type: String, default: "" },
+  clientAddress: { type: String, default: "" },
+  clientState: { type: String, default: "" },
+  clientPinCode: { type: String, default: "" },
 
   // Proposal/Invoice Info
-  formType: String, //dpi or cpi
-  proposalDate: String,
-  invoiceNumber: String,
-  invoiceGeneratedBy: String,
+  formType: { type: String, default: "" }, //dpi or cpi
+  proposalDate: { type: String, default: "" },
+  invoiceNumber: { type: String, default: "" },
+  invoiceGeneratedBy: { type: String, default: "" },
 
   // System Configuration
-  systemType: String,
-  systemConnection: String,
-  gridType: String,
-  electricSupply: String,
+  systemType: { type: String, default: "" },
+  systemConnection: { type: String, default: "" },
+  gridType: { type: String, default: "" },
+  electricSupply: { type: String, default: "" },
 
   // Module Details
-  brand: String,
-  type: String,
-  moduleTechnology: String,
-  moduleWatt: Number,
-  quantity: Number,
-  modRequired1: Boolean,
+  brand: { type: String, default: "" },
+  type: { type: String, default: "" },
+  moduleTechnology: { type: String, default: "" },
+  moduleWatt: { type: Number, default: 0 },
+  quantity: { type: Number, default: 0 },
+  modRequired1: { type: Boolean, default: false },
 
   // Inverter Details
-  inverterBrand: String,
-  inverterPower: Number,
-  inverterQuantity: Number,
-  invRequired4: Boolean,
+  inverterBrand: { type: String, default: "" },
+  inverterPower: { type: Number, default: 0 },
+  inverterQuantity: { type: Number, default: 0 },
+  invRequired4: { type: Boolean, default: false },
 
   // Battery Details
-  batteryBrand: String,
-  batteryType: String,
-  batteryCapacity: String,
-  batteryQuantity: Number,
-  batteryRequired9: Boolean,
+  batteryBrand: { type: String, default: "" },
+  batteryType: { type: String, default: "" },
+  batteryCapacity: { type: String, default: "" },
+  batteryQuantity: { type: Number, default: 0 },
+  batteryRequired9: { type: Boolean, default: false },
 
   // Costing & Charges
-  totalProjectValue: Number,
-  supplyPercentage: Number,
-  applicationCost: Number,
-  meterCost: Number,
-  caCertificate: Number,
-  fitnessCertificate: Number,
-  extraHeightTotalCost: Number,
-  transportationCost: Number,
-  miscellaneousExpenses: Number,
-  liaisonCost: Number,
-  pricePerWattIncGst: Number,
-  TotalInvoiceAmoutCalculated:Number,
+  totalProjectValue: { type: Number, default: 0 },
+  supplyPercentage: { type: Number, default: 0 },
+  applicationCost: { type: Number, default: 0 },
+  meterCost: { type: Number, default: 0 },
+  caCertificate: { type: Number, default: 0 },
+  fitnessCertificate: { type: Number, default: 0 },
+  extraHeightTotalCost: { type: Number, default: 0 },
+  transportationCost: { type: Number, default: 0 },
+  miscellaneousExpenses: { type: Number, default: 0 },
+  liaisonCost: { type: Number, default: 0 },
+  pricePerWattIncGst: { type: Number, default: 0 },
+  TotalInvoiceAmoutCalculated: { type: Number, default: 0 },
 
   // Discounts
-  discount: String,
-  materialDiscount: Number,
-  installationDiscount: Number,
-  erectionDiscount: Number,
-  netMeteringDiscount: Number,
+  discount: { type: String, default: "" },
+  materialDiscount: { type: Number, default: 0 },
+  installationDiscount: { type: Number, default: 0 },
+  erectionDiscount: { type: Number, default: 0 },
+  netMeteringDiscount: { type: Number, default: 0 },
 
   // Rating
-  PVTotalRatingKW: Number,
+  PVTotalRatingKW: { type: Number, default: 0 },
 
   // Freebies / Extra
-  freeMaterial: String,
+  freeMaterial: { type: String, default: "" },
 
   // HSNSAC
-  hsnsacCode2: String,
-  hsnsacCode2Inverter: String,
-  hsnsacCode2Solar: String,
+  hsnsacCode2: { type: String, default: "" },
+  hsnsacCode2Inverter: { type: String, default: "" },
+  hsnsacCode2Solar: { type: String, default: "" },
 
   // Additional Materials
-  mat1Required3: Boolean,
-  mat1DCCableMaterial:String,  // Default: "Copper",
-  mat2Required5: Boolean,
-  mat2ACCableMaterial: String, // Default: "Aluminium",
-  busMcbRequired6: Boolean,
-  fireERequired7: Boolean,
-  autoCleanRequired8: Boolean,
+  mat1Required3: { type: Boolean, default: false },
+  mat1DCCableMaterial: { type: String, default: "Copper" },
+  mat2Required5: { type: Boolean, default: false },
+  mat2ACCableMaterial: { type: String, default: "Aluminium" },
+  busMcbRequired6: { type: Boolean, default: false },
+  fireERequired7: { type: Boolean, default: false },
+  autoCleanRequired8: { type: Boolean, default: false },
+  
   // Structure Info
-  stRoofRequired2: Boolean,
-  stTinRequired2: Boolean,
-  status:String, // default "", if payment is done then "Active"
+  stRoofRequired2: { type: Boolean, default: false },
+  stTinRequired2: { type: Boolean, default: false },
+  
+  status: { type: String, default: "" } // default "", if payment is done then "Active"
 }, { timestamps: true });
 
-const ProformaInvoicesModel = mongoose.model("proformainvoices_tables",ProformaInvoicesSchema);
+const ProformaInvoicesModel = mongoose.model("proformainvoices_tables", ProformaInvoicesSchema);
 
 export default ProformaInvoicesModel;
