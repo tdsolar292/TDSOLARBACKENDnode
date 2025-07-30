@@ -195,8 +195,33 @@ const getAllProformaInvoices = async (req, res) => {
 
     // Total count (with status filter if applied)
     const totalProformaRecords = await ProformaInvoicesModel.countDocuments({});
+    const activeClient = await ProformaInvoicesModel.countDocuments({ status: "active" });
+    const completedClientRecords = await ProformaInvoicesModel.countDocuments({ status: "completed" });
+    const totalProformaInvoicesAmount_DB = await ProformaInvoicesModel.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalAmount: { $sum: "$TotalInvoiceAmoutCalculated" }
+      }
+    }
+  ]);
+  // Extract the total amount (default to 0 if no documents)
+   const totalProformaInvoicesAmount = totalProformaInvoicesAmount_DB.length > 0 ? totalProformaInvoicesAmount_DB[0].totalAmount.toLocaleString('en-IN') : 0;
+
+   //Total Payment Receieved (Query from PaymentReceieved table) 
     const totalPaymentReceiptRecords = await PaymentReceiptModel.countDocuments({});
-    const totalGSTInvoiceRecords = await GSTInvoiceModel.countDocuments({});
+    const totalPaymentsReceieved_DB = await PaymentReceiptModel.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalAmount: { $sum: "$amount" }
+      }
+    }
+  ]);
+  // Extract the total amount (default to 0 if no documents)
+   const totalPaymentsReceieved = totalPaymentsReceieved_DB.length > 0 ? totalPaymentsReceieved_DB[0].totalAmount.toLocaleString('en-IN') : 0;
+
+   
 
     // Total pages calculation
     const totalPages = Math.ceil(total / pageSize);
@@ -208,14 +233,13 @@ const getAllProformaInvoices = async (req, res) => {
       .limit(pageSize)
       .lean();
 
-    // Count active clients (status === "active")
-    const activeClient = await ProformaInvoicesModel.countDocuments({ status: "active" });
-    const completedClientRecords = await ProformaInvoicesModel.countDocuments({ status: "completed" });
+    
 
     res.status(200).json({
       total,
       totalProformaRecords,
-      totalGSTInvoiceRecords,
+      totalProformaInvoicesAmount,
+      totalPaymentsReceieved,
       totalPaymentReceiptRecords,
       completedClientRecords,
       page,

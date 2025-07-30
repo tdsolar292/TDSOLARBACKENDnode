@@ -7,7 +7,15 @@ import proformaInvoiceRoutes from "./routes/proformaInvoicesRoutes/proformaInvoi
 import paymentReceiptRoutes from "./routes/paymentReceiptRoutes/paymentReceiptRoutes.js";
 import { mongoConnection } from "./dbConfig/db.js";
 
+
+// Try to load .env.local first
+dotenv.config({ path: '.env.local' });
+
+// Then load .env (won't override already set variables)
 dotenv.config();
+
+console.log('PORT:', process.env.PORT);
+console.log('NODE_ENV:', process.env.NODE_ENV);
 
 const app = express();
 const PORT = process.env.PORT || 5000;

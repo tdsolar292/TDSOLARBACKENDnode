@@ -91,6 +91,8 @@ export async function sendEmailWithPDF(pdfBuffer, mailData) {
       }
     ]
   };
-
-  await transporter.sendMail(mailOptions);
+  if(process.env.NODE_ENV==='production'){
+    console.log("Inside Email Send "+process.env.NODE_ENV)
+    await transporter.sendMail(mailOptions);
+  }
 }
