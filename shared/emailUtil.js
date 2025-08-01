@@ -20,8 +20,8 @@ export async function sendEmailWithPDF(pdfBuffer, mailData) {
 
   const mailOptions = {
     from: process.env.EMAIL_SENDER_NAME,
-    //to: `${mailData?.clientEmail},contact@tdsolar.in,tdsolar9@gmail.com`,
-    to: `${mailData?.clientEmail}`,
+    to: `${mailData?.clientEmail},contact@tdsolar.in,tdsolar9@gmail.com`,
+    //to: `${mailData?.clientEmail}`,
     //to: `tdsolar9@gmail.com`,
     subject,
     html: `
