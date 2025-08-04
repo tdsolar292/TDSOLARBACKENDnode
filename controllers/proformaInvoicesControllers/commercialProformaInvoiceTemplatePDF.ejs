@@ -152,14 +152,14 @@
        <strong class="clss-up">Buyer Details</strong><br><br>
       <strong><%= clientName ? clientName : '' %></strong><br>
         <%= clientAddress ? clientAddress : '' %><br>
-        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%=( clientState ? clientState : '') +' '+ (clientPinCode ? clientPinCode :'') %><br><br>
         <%= clientMobile ? clientMobile : '' %><br>
         <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
     </td>
     <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
       <strong><%= clientName ? clientName : '' %></strong><br>
         <%= clientAddress ? clientAddress : '' %><br>
-        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%=( clientState ? clientState : '') +' '+ (clientPinCode ? clientPinCode :'') %><br><br>
         <%= clientMobile ? clientMobile : '' %><br>
         <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
     </td>

@@ -149,14 +149,14 @@
        <strong class="clss-up">Buyer Details</strong><br><br>
       <strong><%= clientName ? clientName : '' %></strong><br>
         <%= clientAddress ? clientAddress : '' %><br>
-        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%=( clientState ? clientState : '') +' '+ (clientPinCode ? clientPinCode :'') %><br><br>
         <%= clientMobile ? clientMobile : '' %><br>
         <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
     </td>
     <td class="clss-cell clss-camel" width="33%"><strong class="clss-up">Consignee Details</strong><br><br>
        <strong><%= clientName ? clientName : '' %></strong><br>
         <%= clientAddress ? clientAddress : '' %><br>
-        <%= clientState ? clientState : '' +' '+ clientPinCode ? clientPinCode :'' %><br><br>
+        <%=( clientState ? clientState : '') +' '+ (clientPinCode ? clientPinCode :'') %><br><br>
         <%= clientMobile ? clientMobile : '' %><br>
         <span class="clss-lower"><%= clientEmail ? clientEmail : '' %></span>
     </td>
@@ -183,7 +183,7 @@
   </tr>
 </table>
   <h2 style="text-align:center;margin: 0; padding:0.5rem 1rem 0.5rem 1rem;" class="clss-header clss-bg-y">DOMESTIC PROFORMA INVOICE</h2>
-  <h4 style="text-align:left;margin: 0; padding:10px 5px;" class="clss-header"> Project Type : <%= (moduleWatt*quantity*0.001)+' KW '+systemType  %></h4>
+  <h4 style="text-align:left;margin: 0; padding:10px 5px;" class="clss-header"> Project Type : <%= round2(moduleWatt*quantity*0.001)+' KW '+systemType  %></h4>
 
 
 <!--DEVIDER-->
